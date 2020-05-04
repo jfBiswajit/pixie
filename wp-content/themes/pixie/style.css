@@ -15,3 +15,7 @@ Tags: threaded-comments,right-sidebar,four-columns,custom-background,custom-colo
 .page_item {
   list-style: none;
 }
+
+.current-menu-item>a {
+  color: black !important;
+}

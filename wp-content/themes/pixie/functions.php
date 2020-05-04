@@ -15,11 +15,28 @@ function features()
   register_nav_menu('footer_menu', 'Location - Footer');
 }
 
+function custom_query($query)
+{
+  if (!is_admin() && is_post_type_archive('event') && $query->is_main_query()) {
+    $query->set('meta_key', 'event_date');
+    $query->set('orderby', 'meta_value_num');
+    $query->set('order', 'ASC');
+    $query->set('meta_query', array(
+      array(
+        'key' => 'event_date',
+        'compare' => '>=',
+        'value' => date('Ymd'),
+        'type' => 'numeric'
+      )
+    ));
+  }
+}
 
 
 // Call functions
 add_action('wp_enqueue_scripts', 'load_assets');
 add_action('after_setup_theme', 'features');
+add_action('pre_get_posts', 'custom_query');
 
 
 
@@ -40,6 +57,7 @@ function add_menu_list_item_class($classes, $item, $args)
   }
   return $classes;
 }
+
 
 add_filter('nav_menu_link_attributes', 'add_menu_link_class', 1, 3);
 add_filter('nav_menu_css_class', 'add_menu_list_item_class', 1, 3);

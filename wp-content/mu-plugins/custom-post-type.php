@@ -2,8 +2,10 @@
 function custom_post_type()
 {
   register_post_type('event', array(
-    'public' => true,
+    'supports' => array('title', 'editor', 'excerpt', 'custom-fields'),
+    'rewrite' => array('slug' => 'events'),
     'has_archive' => true,
+    'public' => true,
     'description' => 'Add new event from this menu',
     'menu_icon' => 'dashicons-calendar-alt',
     'labels' => array(
