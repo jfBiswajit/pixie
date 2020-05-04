@@ -15,6 +15,8 @@ function features()
   register_nav_menu('footer_menu', 'Location - Footer');
 }
 
+
+
 // Call functions
 add_action('wp_enqueue_scripts', 'load_assets');
 add_action('after_setup_theme', 'features');

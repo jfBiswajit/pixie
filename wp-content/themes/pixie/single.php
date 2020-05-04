@@ -3,7 +3,7 @@
   <?php while (have_posts()) : the_post() ?>
     <div class="container">
       <h4><?php the_title() ?></h4>
-      <p class="bg-light p-2">Author: <?php the_author_posts_link() ?>, At: <?php the_time() ?>, On: <?php the_time() ?> In: <?php echo get_the_category_list(',') ?></p>
+      <div class="mb-4 text-muted">(Author <?php the_author_posts_link() ?>) (at <?php the_time('h:i a') ?>) (on <?php the_time('d-M-y') ?>) (in <?php echo get_the_category_list(',') ?>)</div>
       <div class="border p-2 mb-2">
         <?php the_content() ?>
       </div>

@@ -1,4 +1,4 @@
-<footer class="p-4 bg-secondary">
+<footer class="p-4 bg-secondary container">
   <?php
   wp_nav_menu([
     'theme_location' => 'footer_menu',
