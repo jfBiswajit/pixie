@@ -20,7 +20,7 @@ function custom_post_type()
   
   // Custom post type - Program
   register_post_type('program', array(
-    'supports' => array('title', 'editor', 'excerpt'),
+    'supports' => array('title', 'editor'),
     'rewrite' => array('slug' => 'programs'),
     'has_archive' => true,
     'public' => true,
@@ -32,6 +32,21 @@ function custom_post_type()
       'edit_item' => 'Edit Program',
       'all_items' => 'All Programs',
       'singular_name' => 'Program'
+    )
+  ));
+
+  // Custom post type - Professor
+  register_post_type('professor', array(
+    'supports' => array('title', 'editor', 'thumbnail'),
+    'public' => true,
+    'description' => 'Add new event from this menu',
+    'menu_icon' => 'dashicons-welcome-learn-more',
+    'labels' => array(
+      'name' => 'professor',
+      'add_new_item' => 'Add New Professor',
+      'edit_item' => 'Edit Professor',
+      'all_items' => 'All professor',
+      'singular_name' => 'Professor'
     )
   ));
 }

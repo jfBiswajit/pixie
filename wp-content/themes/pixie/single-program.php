@@ -13,6 +13,31 @@
       </div>
 
       <?php
+      $Professor = new WP_Query(array(
+        'posts_per_page' => -1,
+        'post_type' => 'professor',
+        'orderby' => 'title',
+        'order' => 'ASC',
+        'meta_query' => array(
+          array(
+            'key' => 'related_program',
+            'compare' => 'LIKE',
+            'value' => '"' . get_the_ID() . '"'
+          )
+        )
+      ))
+      ?>
+      <div class="p-2">Professors:
+        <?php if ($Professor->have_posts()) : ?>
+          <?php while ($Professor->have_posts()) : $Professor->the_post()  ?>
+
+            <span class="badge badge-dark"><a class="text-light" href="<?php the_permalink() ?>"><?php the_title() ?></a></span>
+          <?php endwhile ?>
+        <?php endif ?>
+      </div>
+
+      <?php
+      wp_reset_postdata();
       $LatestEvents = new WP_Query(array(
         'posts_per_page' => 3,
         'post_type' => 'event',
@@ -32,7 +57,8 @@
             'value' => '"' . get_the_ID() . '"'
           )
         )
-      ))
+      ));
+
       ?>
 
       <?php if ($LatestEvents->have_posts()) : ?>
@@ -55,8 +81,6 @@
           <?php endwhile ?>
         </ul>
       <?php endif ?>
-      <?php wp_reset_postdata() ?>
-      <!--dont forget to reset-->
     </div>
   <?php endwhile ?>
 <?php endif ?>

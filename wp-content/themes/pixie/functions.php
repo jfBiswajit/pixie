@@ -11,6 +11,9 @@ function load_assets()
 function features()
 {
   add_theme_support('title-tag');
+  add_theme_support('post-thumbnails');
+  add_image_size('professor_thumbnail-square', 200, 200, true);
+  add_image_size('page_banner', 1500, 350, true);
   register_nav_menu('header_menu', 'Location - Header');
   register_nav_menu('footer_menu', 'Location - Footer');
 }
