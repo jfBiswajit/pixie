@@ -11,6 +11,17 @@
           <?php the_content() ?>
         </div>
       </div>
+      <?php $RelatedPrograms = get_field('related_program'); ?>
+      <?php if ($RelatedPrograms) : ?>
+        <div class="my-2">
+          <h4 class="bg-light p-2">Related Programs</h4>
+          <ul class="list-group">
+            <?php foreach ($RelatedPrograms as $programs) : ?>
+              <li class="list-group-item"><a class="text-danger" href="<?php echo get_the_permalink($programs) ?>"><?php echo get_the_title($programs) ?></a></li>
+            <?php endforeach ?>
+          </ul>
+        </div>
+      <?php endif ?>
     </div>
   <?php endwhile ?>
 <?php endif ?>

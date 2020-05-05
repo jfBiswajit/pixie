@@ -17,6 +17,12 @@ function features()
 
 function custom_query($query)
 {
+  if (!is_admin() && is_post_type_archive('program') && $query->is_main_query()) {
+    $query->set('orderby', 'title');
+    $query->set('order', 'ASC');
+    $query->set('post_per_page', -1);
+  }
+
   if (!is_admin() && is_post_type_archive('event') && $query->is_main_query()) {
     $query->set('meta_key', 'event_date');
     $query->set('orderby', 'meta_value_num');
