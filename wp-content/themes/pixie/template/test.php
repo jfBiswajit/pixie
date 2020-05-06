@@ -1,0 +1,1 @@
+<h5 class="text-center p-2 text-danger text-uppercase">This text comes from template file</h5>

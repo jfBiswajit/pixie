@@ -41,6 +41,16 @@ function custom_query($query)
   }
 }
 
+function pageBannerTemp()
+{
+?>
+  <li class="list-group-item p-4 text-light" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<?php echo get_field('page_banner_bg_image')['sizes']['page_banner'] ?>)">
+    <h2><?php the_title() ?></h2>
+    <h4><?php the_field('page_banner_subtitle') ?></h4>
+  </li>
+<?php
+}
+
 
 // Call functions
 add_action('wp_enqueue_scripts', 'load_assets');
